@@ -1,22 +1,23 @@
 import customtkinter as ctk
 import tkinter as tk
 
+from PIL import Image
 
-class Player(ctk.CTkFrame):
+
+class PlayerFrame(ctk.CTkFrame):
     def __init__(self, master, **kwargs):
         super().__init__(master, **kwargs)
 
-        self.player_frame = ctk.CTkFrame(self, height=100, width=1000)
-        self.player_frame.pack()
+        self.previous_image = ctk.CTkImage(Image.open('media/previous.png'))
+        self.previous_button = ctk.CTkButton(master=self, text='', image=self.previous_image, fg_color='transparent')
+        self.previous_button.pack(anchor=tk.S, expand=True,side="left")
 
-        self.next_image = tk.PhotoImage(file='media/next.png')
-        self.next_button = ctk.CTkButton(self, text='Next', image=self.next_image)
-        self.next_button.pack()
+        self.pause_image = ctk.CTkImage(Image.open('media/play.png'))
+        self.pause_button = ctk.CTkButton(master=self, text='', image=self.pause_image, fg_color='transparent')
+        self.pause_button.pack(anchor=tk.S, expand=True,side="left")
 
-        self.previous_image = tk.PhotoImage(file='media/previous.png')
-        self.previous_button = ctk.CTkButton(self, text='Previous', image=self.previous_image)
-        self.previous_button.pack()
+        self.next_image = ctk.CTkImage(Image.open('media/next.png'))
+        self.next_button = ctk.CTkButton(master=self, text='', image=self.next_image, fg_color='transparent')
+        self.next_button.pack(anchor=tk.S,expand=True,side="left")
 
-        self.pause_image = tk.PhotoImage(file='media/play.png')
-        self.pause_button = ctk.CTkButton(self, text='Pause', image=self.pause_image)
-        self.pause_button.pack()
+

@@ -24,8 +24,8 @@ class App(ctk.CTk):
         self.navigator = LateralFrame(self, width=180, height=500)
         self.navigator.pack(anchor=tk.NW, side="left")
 
-        self.player_bar = PlayerFrame(self, width=820, height=50)
-        self.player_bar.pack(anchor="s", side="bottom")
+        ##self.player_bar = PlayerFrame(self, width=820, height=50)
+        ##self.player_bar.pack(anchor="s", side="bottom")
 
 
 app = App()

@@ -10,10 +10,9 @@ class LateralFrame(ctk.CTkFrame):
 
         self.pack_propagate(0)
 
-        self.spotify_image_frame = ctk.CTkFrame(self, width=128, height=128)
-        self.spotify_image_frame.pack(expand=True)
+        self.spotify_image = ctk.CTkImage(Image.open('media/appicon/spotify_logo.png'))
 
-        self.spotify_label = ctk.CTkLabel(self, text='Spotify')
+        self.spotify_label = ctk.CTkLabel(self, text='', image=self.spotify_image)
         self.spotify_label.pack(expand=True)
 
         self.albums_image = ctk.CTkImage(Image.open('media/icons/albums_32.png'))

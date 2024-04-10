@@ -8,6 +8,7 @@ from app.player_frame import *
 from app.navigator import *
 from app.search import *
 
+
 def setup():
     application_id = 'nsi.project.spotify.1_0'
     ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID(application_id)
@@ -27,6 +28,10 @@ class App(ctk.CTk):
         self.navigator.pack(anchor=tk.NW, side="left")
 
         self.search_frame = SearchFrame(self, width=1050, height=170)
+
+        self.navigator.search_button_state.trace('w', self.pack_search)
+
+    def pack_search(self, *args):
         self.search_frame.pack(anchor=tk.N, pady=30)
 
 

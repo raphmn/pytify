@@ -28,6 +28,22 @@ class LateralFrame(ctk.CTkFrame):
 
         self.search_image = ctk.CTkImage(Image.open('media/icons/search_32.png'))
         self.search_button = ctk.CTkButton(self, text='Search',
-                                           image=self.search_image)
+                                           image=self.search_image, command=self.change_search_state)
         self.search_button.pack(ipadx=0, ipady=20, expand=True)
+
+        self.search_button_state = tk.BooleanVar()
+        self.albums_button_state = tk.BooleanVar()
+        self.artists_button_state = tk.BooleanVar()
+
+    def change_search_state(self):
+        self.search_button_state.set(True)
+
+    def change_album_state(self):
+        self.search_button_state.set(True)
+
+    def change_artist_state(self):
+        self.search_button_state.set(True)
+
+
+
 

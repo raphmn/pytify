@@ -24,6 +24,10 @@ class App(ctk.CTk):
         self.title('Pytify')
         self.iconbitmap('media/appicon/appicon_w.ico')
 
+        self.start_page_image = ctk.CTkImage(Image.open('media/start_page.png'), size=(800, 600))
+        self.start_page = ctk.CTkLabel(self, text='', image=self.start_page_image)
+        self.start_page.pack(anchor=tk.CENTER, side=tk.RIGHT, expand=True)
+
         self.navigator = LateralFrame(self, width=180, height=1080)
         self.navigator.pack(anchor=tk.NW, side="left")
 
@@ -32,6 +36,7 @@ class App(ctk.CTk):
         self.navigator.search_button_state.trace('w', self.pack_search)
 
     def pack_search(self, *args):
+        self.start_page.destroy()
         self.search_frame.pack(anchor=tk.N, pady=30)
 
 

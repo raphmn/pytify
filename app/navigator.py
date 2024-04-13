@@ -23,7 +23,7 @@ class LateralFrame(ctk.CTkFrame):
 
         self.artists_image = ctk.CTkImage(Image.open('media/icons/artists_32.png'))
         self.artists_button = ctk.CTkButton(self, text='Artists',
-                                            image=self.artists_image)
+                                            image=self.artists_image, command=self.change_artist_display)
         self.artists_button.pack(ipadx=0, ipady=20, expand=True)
 
         self.search_image = ctk.CTkImage(Image.open('media/icons/search_32.png'))
@@ -39,10 +39,10 @@ class LateralFrame(ctk.CTkFrame):
         self.search_button_display.set((True if not self.search_button_display.get() else False))
 
     def change_album_display(self):
-        self.search_button_display.set(True)
+        self.albums_button_display.set((True if not self.albums_button_display.get() else False))
 
     def change_artist_display(self):
-        self.search_button_display.set(True)
+        self.artists_button_display.set((True if not self.artists_button_display.get() else False))
 
 
 

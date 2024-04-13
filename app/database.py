@@ -23,6 +23,10 @@ def album_from_song(song):
             request.execute(f"SELECT nomAlbum from Album NATURAL JOIN Morceau WHERE nomMorceau = '{song}'"))
 
 
+def artist_style():
+    return (album for album in
+            request.execute(f"SELECT nomArtiste from Artiste"))
+
 def update_artists(listeArtiste):
     request.execute('SELECT * from Artiste')
     for artiste in request:
@@ -43,4 +47,3 @@ Albums = update_albums(Albums)
 
 Artistes = {}
 Artistes = update_artists(Artistes)
-

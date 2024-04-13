@@ -18,7 +18,7 @@ class LateralFrame(ctk.CTkFrame):
 
         self.albums_image = ctk.CTkImage(Image.open('media/icons/albums_32.png'))
         self.albums_button = ctk.CTkButton(self, text='Albums',
-                                           image=self.albums_image)
+                                           image=self.albums_image, command=self.change_album_display)
         self.albums_button.pack(ipadx=0, ipady=20, expand=True)
 
         self.artists_image = ctk.CTkImage(Image.open('media/icons/artists_32.png'))

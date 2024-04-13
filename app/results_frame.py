@@ -38,7 +38,8 @@ class ResultsFrame(ctk.CTkFrame):
 
         for i in range(len(self.toDisplay)):
             self.toDisplayDict[i] = ctk.CTkFrame(self, width=200, height=250)
+
             self.LabelDict[i] = ctk.CTkLabel(self.toDisplayDict[i], text=str(self.toDisplay[i]))
 
-            self.toDisplayDict[i].pack(side=tk.LEFT, expand=True, ipady=20, ipadx=20, pady=20, padx=20)
+            self.toDisplayDict[i].pack(anchor=tk.NW, side=tk.LEFT, expand=True, ipady=20, ipadx=20, pady=20, padx=20)
             self.LabelDict[i].pack(anchor=tk.CENTER, ipady=20, ipadx=20, pady=20, padx=20)

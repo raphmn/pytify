@@ -14,6 +14,7 @@ class ArtistsFrame(ctk.CTkFrame):
 
         self.framesLabels = {}
         self.frames = {}
+        self.playButtons = {}
 
         for i in range(1, len(app.database.Artistes)):
 
@@ -22,3 +23,6 @@ class ArtistsFrame(ctk.CTkFrame):
 
             self.frames[i].pack(anchor=tk.NW, side=tk.LEFT, padx=20, pady=20, ipadx=20, ipady=20)
             self.framesLabels[i].pack(anchor=tk.N, pady=25)
+
+            self.playButtons[i] = ctk.CTkButton(self.frames[i], text='►', width=30, height=30, fg_color='transparent', border_color='blue')
+            self.playButtons[i].pack(anchor=tk.SE, expand=True, padx=15, pady=15)

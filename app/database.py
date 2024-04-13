@@ -12,6 +12,9 @@ def search_from_nationality(nationality):
 def album_from_artist():
     return [album for album in request.execute("SELECT nomArtiste, nomAlbum from Artiste NATURAL JOIN Album")]
 
+def album_style():
+    return [album for album in request.execute("SELECT nomAlbum, style from Album")]
+
 
 def album_from_style(style):
     return [album for album in
@@ -42,8 +45,11 @@ def update_albums(listeAlbum):
             listeAlbum[album[0]] = album[1:]
     return listeAlbum
 
+
 Albums = {}
 Albums = update_albums(Albums)
 
 Artistes = {}
 Artistes = update_artists(Artistes)
+
+print(album_style())

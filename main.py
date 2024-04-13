@@ -1,12 +1,9 @@
-import customtkinter as ctk
-import tkinter as tk
-
-from PIL import Image
 import ctypes
+from tkinter import StringVar
 
-from app.player_frame import *
 from app.navigator import *
-from app.search import *
+from app.search_frame import *
+from app.results_frame import *
 
 
 def setup():
@@ -18,8 +15,10 @@ def setup():
 
 
 class App(ctk.CTk):
+
     def __init__(self):
         super().__init__()
+
         self.geometry('1280x720')
         self.title('Pytify')
         self.iconbitmap('media/appicon/appicon_w.ico')
@@ -31,13 +30,26 @@ class App(ctk.CTk):
         self.navigator = LateralFrame(self, width=180, height=1080)
         self.navigator.pack(anchor=tk.NW, side="left")
 
-        self.search_frame = SearchFrame(self, width=1050, height=170)
+        self.search_frame = SearchFrame(self, width=750, height=1080)
+        self.results_frame = ResultsFrame(self, width=750, height=1080)
 
-        self.navigator.search_button_state.trace('w', self.pack_search)
+        self.navigator.search_button_display.trace('w', self.pack_search)
+
+        self.search_frame.search.trace('w', self.results_frame.search_update)
+        self.search_frame.search.trace('w', self.search_update)
 
     def pack_search(self, *args):
-        self.start_page.destroy()
-        self.search_frame.pack(anchor=tk.N, pady=30)
+        if self.navigator.search_button_display.get():
+            self.start_page.pack_forget()
+            self.search_frame.pack(anchor=tk.N, ipady=25, pady=17, ipadx=150)
+            self.results_frame.pack(anchor=tk.S, ipady=250, pady=17, ipadx=150)
+        else:
+            self.search_frame.pack_forget()
+            self.results_frame.pack_forget()
+            self.start_page.pack(anchor=tk.CENTER, side=tk.RIGHT, expand=True)
+
+    def search_update(self, *args):
+        self.results_frame.search.set(self.search_frame.search.get())
 
 
 if __name__ == '__main__':

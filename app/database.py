@@ -1,6 +1,6 @@
 from sqlite3 import *
 
-connexion = connect('C:/Users/Raph/Documents/GitHub/Spotify-DB-Clone/database/sqlite.db')
+connexion = connect('C:/Users/Raph/PycharmProjects/pytify/database/sqlite.db')
 request = connexion.cursor()
 
 
@@ -38,12 +38,9 @@ def update_albums(listeAlbum):
             listeAlbum[album[0]] = album[1:]
     return listeAlbum
 
+Albums = {}
+Albums = update_albums(Albums)
 
 Artistes = {}
-update_artists(Artistes)
+Artistes = update_artists(Artistes)
 
-Albums = {}
-update_albums(Albums)
-
-print(Artistes)
-print(Albums)

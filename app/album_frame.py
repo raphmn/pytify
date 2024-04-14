@@ -27,7 +27,7 @@ class AlbumFrame(ctk.CTkScrollableFrame):
             self.stylesFrames[k] = ctk.CTkFrame(self, width=750, height=250, border_color='grey', border_width=1)
             self.stylesLabels[k] = ctk.CTkLabel(self.stylesFrames[k], text=str(self.styles[k]), font=('Segoe UI', 20))
 
-            self.stylesFrames[k].pack(anchor=tk.NW, pady=10, padx=10)
+            self.stylesFrames[k].pack(anchor=tk.NW, pady=10, padx=10, ipadx=500, expand=True)
             self.stylesLabels[k].pack(anchor=tk.NW, pady=10, padx=10)
 
             for j in range(0, len(self.albumsList)):
@@ -35,5 +35,5 @@ class AlbumFrame(ctk.CTkScrollableFrame):
                     self.albumFrames[j] = ctk.CTkFrame(self.stylesFrames[k], width=200, height=250)
                     self.albumLabels[j] = ctk.CTkLabel(self.albumFrames[j], text=str(self.albumsList[j][0]))
 
-                    self.albumFrames[j].pack(side=tk.LEFT, anchor=tk.SW, padx=10, pady=10, expand=True)
+                    self.albumFrames[j].pack(side=tk.LEFT, anchor=tk.SW, padx=10, pady=10, expand=False)
                     self.albumLabels[j].pack(anchor=tk.N, pady=10, padx=10)

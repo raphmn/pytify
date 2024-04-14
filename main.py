@@ -23,7 +23,7 @@ class App(ctk.CTk):
         self.geometry('1280x720')
         self.title('Pytify')
         self.iconbitmap('media/appicon/appicon_w.ico')
-        self.resizable(False, False)
+        self.resizable(True, True)
 
         self.pack_propagate(False)
 

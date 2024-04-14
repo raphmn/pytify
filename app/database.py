@@ -1,6 +1,6 @@
 from sqlite3 import *
 
-connexion = connect('database/sqlite.db')
+connexion = connect("database/sqlite.db")
 request = connexion.cursor()
 
 
@@ -47,4 +47,4 @@ Albums = update_albums(Albums)
 Artistes = {}
 Artistes = update_artists(Artistes)
 
-print(album_style())
+print(Artistes)

@@ -4,23 +4,35 @@ import tkinter as tk
 import app.database
 
 
-class ArtistsFrame(ctk.CTkFrame):
+class ArtistsFrame(ctk.CTkScrollableFrame):
     def __init__(self, master, **kwargs):
         super().__init__(master, **kwargs)
-
-        self.pack_propagate(False)
 
         self.framesLabels = {}
         self.frames = {}
         self.playButtons = {}
 
-        for i in range(1, len(app.database.Artistes)):
+        self.packFrames = {}
+        self.frameIndex = 1
 
-            self.frames[i] = ctk.CTkFrame(self, width=200, height=250)
+        for k in range(1, (len(app.database.Artistes) // 5)+2):
+            self.packFrames[k] = ctk.CTkFrame(self, width=750, height=275)
+            self.packFrames[k].pack(anchor=tk.NW, pady=20, padx=20, expand=False)
+
+        for i in range(1, len(app.database.Artistes)+1):
+
+            if len(self.packFrames[self.frameIndex].winfo_children()) == 5:
+                self.frameIndex += 1
+
+            self.frames[i] = ctk.CTkFrame(self.packFrames[self.frameIndex], width=200, height=250, border_color='grey',
+                                          border_width=1)
             self.framesLabels[i] = ctk.CTkLabel(self.frames[i], text=str(app.database.Artistes[i][0]))
 
-            self.frames[i].pack(anchor=tk.NW, side=tk.LEFT, padx=20, pady=20, ipadx=20, ipady=20)
+            print("added " + str(app.database.Artistes[i][0]))
+
+            self.frames[i].pack(anchor=tk.NW, side=tk.LEFT, padx=20, pady=20, ipadx=50, ipady=20, expand=False)
             self.framesLabels[i].pack(anchor=tk.N, pady=25)
 
-            self.playButtons[i] = ctk.CTkButton(self.frames[i], text='►', width=30, height=30, fg_color='transparent', border_color='blue')
+            self.playButtons[i] = ctk.CTkButton(self.frames[i], text='►', width=30, height=30, fg_color='transparent',
+                                                border_color='blue')
             self.playButtons[i].pack(anchor=tk.SE, expand=True, padx=15, pady=15)

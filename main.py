@@ -1,11 +1,11 @@
 import ctypes
-from tkinter import StringVar
 
 from app.navigator import *
 from app.search_frame import *
 from app.results_frame import *
 from app.artists_frame import *
 from app.album_frame import *
+
 
 def setup():
     application_id = 'nsi.project.spotify.1_0'
@@ -23,7 +23,7 @@ class App(ctk.CTk):
         self.geometry('1280x720')
         self.title('Pytify')
         self.iconbitmap('media/appicon/appicon_w.ico')
-        self.resizable(False,False)
+        self.resizable(False, False)
 
         self.pack_propagate(False)
 

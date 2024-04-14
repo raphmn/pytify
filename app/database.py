@@ -1,6 +1,6 @@
 from sqlite3 import *
 
-connexion = connect('C:/Users/Raph/PycharmProjects/pytify/database/sqlite.db')
+connexion = connect('database/sqlite.db')
 request = connexion.cursor()
 
 
@@ -15,7 +15,6 @@ def album_from_artist():
 def album_style():
     return [album for album in request.execute("SELECT nomAlbum, style from Album")]
 
-
 def album_from_style(style):
     return [album for album in
             request.execute(f"SELECT nomArtiste, nomAlbum from Artiste NATURAL JOIN Album WHERE style = '{style}'")]
@@ -25,10 +24,6 @@ def album_from_song(song):
     return (album for album in
             request.execute(f"SELECT nomAlbum from Album NATURAL JOIN Morceau WHERE nomMorceau = '{song}'"))
 
-
-def artist_style():
-    return (album for album in
-            request.execute(f"SELECT nomArtiste from Artiste"))
 
 def update_artists(listeArtiste):
     request.execute('SELECT * from Artiste')

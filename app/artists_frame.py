@@ -1,6 +1,7 @@
 import customtkinter as ctk
 import tkinter as tk
 
+from app.artists_details_frame import *
 import app.database
 
 
@@ -8,6 +9,7 @@ class ArtistsFrame(ctk.CTkScrollableFrame):
     def __init__(self, master, **kwargs):
         super().__init__(master, **kwargs)
 
+        self.artist_detailed_frame = None
         self.framesLabels = {}
         self.frames = {}
         self.playButtons = {}
@@ -34,5 +36,11 @@ class ArtistsFrame(ctk.CTkScrollableFrame):
             self.framesLabels[i].pack(anchor=tk.N, pady=25)
 
             self.playButtons[i] = ctk.CTkButton(self.frames[i], text='►', width=30, height=30, fg_color='transparent',
-                                                border_color='blue')
+                                                border_color='blue', command=lambda i=i: self.show_artist_details(i))
+            print('added button with artist id ' + str(i))
             self.playButtons[i].pack(anchor=tk.SE, expand=True, padx=15, pady=15)
+
+    def show_artist_details(self, artist_id):
+
+        self.artist_detailed_frame = ArtistDetailsFrame(self, artist_id=artist_id)
+        self.artist_detailed_frame.pack()

@@ -13,6 +13,7 @@ class ResultsFrame(ctk.CTkScrollableFrame):
         self.toDisplay = []
         self.toDisplayDict = {}
         self.LabelDict = {}
+        self.TypeLabelDict = {}
 
         self.no_results = ctk.CTkLabel(self, text='Pas de résultats.', font=('Segoe UI', 12), text_color='grey')
         self.start_text = ctk.CTkLabel(self, text="Les résultats s'afficheront ici", font=('Segoe UI', 12),
@@ -28,27 +29,34 @@ class ResultsFrame(ctk.CTkScrollableFrame):
         self.toDisplay = []
         self.toDisplayDict = {}
         self.LabelDict = {}
+        self.TypeLabelDict = {}
 
         self.start_text.pack_forget()
         self.no_results.pack_forget()
 
         for i in range(1, len(app.database.Albums)):
             if app.database.Albums[i][0][:len(self.search.get())].lower() == self.search.get().lower():
-                self.toDisplay.append(app.database.Albums[i][0])
+                self.toDisplay.append((app.database.Albums[i][0], 'Album (id=' + str(i) + ')'))
 
         for i in range(1, len(app.database.Artistes)):
             if app.database.Artistes[i][0][:len(self.search.get())].lower() == self.search.get().lower():
-                self.toDisplay.append(app.database.Artistes[i][0])
+                self.toDisplay.append((app.database.Artistes[i][0], 'Artiste (id=' + str(i) + ')'))
+
+        for i in range(1, len(app.database.Morceaux)):
+            if app.database.Morceaux[i][0][:len(self.search.get())].lower() == self.search.get().lower():
+                self.toDisplay.append((app.database.Morceaux[i][0], 'Morceau (id=' + str(i) + ')'))
 
         for i in range(0, len(self.toDisplay)):
             self.toDisplayDict[i] = ctk.CTkFrame(self, width=400, height=250, border_color='grey', border_width=1)
 
-            self.LabelDict[i] = ctk.CTkLabel(self.toDisplayDict[i], text=str(self.toDisplay[i]))
+            self.LabelDict[i] = ctk.CTkLabel(self.toDisplayDict[i], text=str(self.toDisplay[i][0]))
+            self.TypeLabelDict[i] = ctk.CTkLabel(self.toDisplayDict[i], text=str(self.toDisplay[i][1]), text_color='grey')
 
             self.toDisplayDict[i].pack(anchor=tk.NW, side=tk.BOTTOM, expand=True, pady=20, padx=20, ipadx=500)
             self.LabelDict[i].pack(anchor=tk.W, pady=20, padx=20)
+            self.TypeLabelDict[i].pack(anchor=tk.E, padx=20, pady=1)
 
         print(self.toDisplay)
 
-        if self.toDisplay == []:
+        if not self.toDisplay:
             self.no_results.pack(anchor=tk.CENTER, pady=150)

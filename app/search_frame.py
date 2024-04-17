@@ -27,8 +27,5 @@ class SearchFrame(ctk.CTkFrame):
                                        font=('Segoe UI', 18), textvariable=self.search)
         self.search_bar.pack(expand=True, anchor=tk.N, side='top')
 
-        self.filter_style = ctk.CTkOptionMenu(self, values=["Style"] + [value for value in self.styles])
+        self.filter_style = ctk.CTkOptionMenu(self, values=[" Style"] + [value for value in self.styles])
         self.filter_style.pack(side='left', padx=25, pady=25)
-
-        self.filter_origin = ctk.CTkOptionMenu(self, values=["Origine"] + [value for value in self.styles])
-        self.filter_origin.pack(side='left', padx=25, pady=25)

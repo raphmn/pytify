@@ -48,6 +48,8 @@ class App(ctk.CTk):
         self.search_frame.search.trace('w', self.results_frame.search_update)
         self.search_frame.search.trace('w', self.search_update)
 
+
+
     def pack_search(self, *args):
         if self.navigator.search_button_display.get():
 
@@ -94,6 +96,7 @@ class App(ctk.CTk):
 
             self.albums_frame.pack_forget()
             self.start_page.pack(anchor=tk.CENTER, side=tk.RIGHT, expand=True)
+
 
 
 if __name__ == '__main__':

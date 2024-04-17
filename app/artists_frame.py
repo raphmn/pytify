@@ -16,6 +16,9 @@ class ArtistsFrame(ctk.CTkScrollableFrame):
 
         self.packFrames = {}
         self.frameIndex = 1
+        
+        artist_search_button = ctk.CTkButton(self, text="Rechercher un artiste a partir d'un morceau", command=lambda artiste1=['Travis Scott']: app.database.artiste_from_song(artiste1))
+        artist_search_button.pack(anchor=tk.S, pady=20, padx=20)
 
         for k in range(1, (len(app.database.Artistes) // 5)+2):
             self.packFrames[k] = ctk.CTkFrame(self, width=750, height=275)
@@ -44,3 +47,5 @@ class ArtistsFrame(ctk.CTkScrollableFrame):
 
         self.artist_detailed_frame = ArtistDetailsFrame(self, artist_id=artist_id)
         self.artist_detailed_frame.pack()
+
+    

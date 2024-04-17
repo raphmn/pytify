@@ -53,3 +53,10 @@ class AlbumFrame(ctk.CTkScrollableFrame):
             for h in range(1, len(self.packFrames)+1):
                 if self.packFrames[h].winfo_children() == []:
                     self.packFrames[h].destroy()
+
+        self.add_album = ctk.CTkButton(self, text='+ Ajouter un album', command=app.database.add_album, width=150, height=60)
+        self.delete_album = ctk.CTkButton(self, text='- Supprimer un album', command=app.database.delete_album, width=150, height=60)
+
+        self.add_album.pack(anchor=tk.CENTER, side='left', padx=20, pady=20)
+        self.delete_album.pack(anchor=tk.CENTER, side='left', padx=20, pady=20)
+        

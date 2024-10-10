@@ -1,0 +1,3 @@
+@echo off
+echo Running pytify...
+python main.py

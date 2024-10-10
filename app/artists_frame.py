@@ -9,6 +9,9 @@ class ArtistsFrame(ctk.CTkScrollableFrame):
     def __init__(self, master, **kwargs):
         super().__init__(master, **kwargs)
 
+        self.artist_detailed_frame_display = tk.BooleanVar()
+        self.artist_detailed_frame_id = tk.IntVar()
+
         self.artist_detailed_frame = None
         self.framesLabels = {}
         self.frames = {}
@@ -44,8 +47,10 @@ class ArtistsFrame(ctk.CTkScrollableFrame):
             self.playButtons[i].pack(anchor=tk.SE, expand=True, padx=15, pady=15)
 
     def show_artist_details(self, artist_id):
+        self.artist_detailed_frame_id.set(artist_id)
+        self.artist_detailed_frame_display.set((True if not self.artist_detailed_frame_display.get() else False))
+        
 
-        self.artist_detailed_frame = ArtistDetailsFrame(self, artist_id=artist_id)
-        self.artist_detailed_frame.pack()
+
 
     

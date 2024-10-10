@@ -1,12 +1,15 @@
 import customtkinter as ctk
 import tkinter as tk
 import app.database
+import app.navigator
 
 
 class ResultsFrame(ctk.CTkScrollableFrame):
 
     def __init__(self, master, **kwargs):
         super().__init__(master, **kwargs)
+
+        self.idMusic = tk.IntVar()
 
         self.search = tk.StringVar()
 
@@ -31,6 +34,8 @@ class ResultsFrame(ctk.CTkScrollableFrame):
         self.LabelDict = {}
         self.TypeLabelDict = {}
 
+        self.change_music_dict = {}
+
         self.start_text.pack_forget()
         self.no_results.pack_forget()
 
@@ -44,7 +49,8 @@ class ResultsFrame(ctk.CTkScrollableFrame):
 
         for i in range(1, len(app.database.Morceaux)):
             if app.database.Morceaux[i][0][:len(self.search.get())].lower() == self.search.get().lower():
-                self.toDisplay.append((app.database.Morceaux[i][0], 'Morceau (id=' + str(i) + ')'))
+                self.toDisplay.append((app.database.Morceaux[i][0], 'Morceau (id=' + str(i) + ')', i))
+                
 
         for i in range(0, len(self.toDisplay)):
             self.toDisplayDict[i] = ctk.CTkFrame(self, width=400, height=250, border_color='grey', border_width=1)
@@ -52,11 +58,17 @@ class ResultsFrame(ctk.CTkScrollableFrame):
             self.LabelDict[i] = ctk.CTkLabel(self.toDisplayDict[i], text=str(self.toDisplay[i][0]))
             self.TypeLabelDict[i] = ctk.CTkLabel(self.toDisplayDict[i], text=str(self.toDisplay[i][1]), text_color='grey')
 
+            self.change_music_dict[i] = ctk.CTkButton(self.toDisplayDict[i], text='+', command=lambda idson=self.toDisplay[i][1]: self.update_song_id(idson), width=10, height=10)
+
             self.toDisplayDict[i].pack(anchor=tk.NW, side=tk.BOTTOM, expand=True, pady=20, padx=20, ipadx=500)
             self.LabelDict[i].pack(anchor=tk.W, pady=20, padx=20)
             self.TypeLabelDict[i].pack(anchor=tk.E, padx=20, pady=1)
+            self.change_music_dict[i].pack(anchor = tk.E, padx=5)
 
         print(self.toDisplay)
 
         if not self.toDisplay:
             self.no_results.pack(anchor=tk.CENTER, pady=150)
+
+    def update_song_id(self, idson, *args):
+        self.idMusic.set(idson)

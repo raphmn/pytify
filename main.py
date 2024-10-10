@@ -48,6 +48,9 @@ class App(ctk.CTk):
         self.search_frame.search.trace('w', self.results_frame.search_update)
         self.search_frame.search.trace('w', self.search_update)
 
+        self.artists_frame.artist_detailed_frame_display.trace('w', self.pack_artist_details)
+
+
 
 
     def pack_search(self, *args):
@@ -56,6 +59,8 @@ class App(ctk.CTk):
             self.start_page.pack_forget()
             self.artists_frame.pack_forget()
             self.albums_frame.pack_forget()
+
+            app.artists_frame.artist_detailed_frame_display.set(False)
 
             self.search_frame.pack(anchor=tk.N, ipady=25, pady=17, ipadx=150)
             self.results_frame.pack(anchor=tk.S, ipady=250, pady=17, ipadx=150)
@@ -76,6 +81,8 @@ class App(ctk.CTk):
             self.search_frame.pack_forget()
             self.results_frame.pack_forget()
             self.albums_frame.pack_forget()
+            
+            app.artists_frame.artist_detailed_frame_display.set(False)
 
             self.artists_frame.pack(anchor=tk.CENTER, ipady=25, pady=17, ipadx=150)
         else:
@@ -90,12 +97,31 @@ class App(ctk.CTk):
             self.search_frame.pack_forget()
             self.results_frame.pack_forget()
             self.artists_frame.pack_forget()
+            
+            app.artists_frame.artist_detailed_frame_display.set(False)
 
             self.albums_frame.pack(anchor=tk.CENTER, ipady=25, pady=17, ipadx=150)
         else:
 
             self.albums_frame.pack_forget()
             self.start_page.pack(anchor=tk.CENTER, side=tk.RIGHT, expand=True)
+
+    def pack_artist_details(self, *args):
+        if self.artists_frame.artist_detailed_frame_display.get():
+
+            self.start_page.pack_forget()
+            self.search_frame.pack_forget()
+            self.results_frame.pack_forget()
+            self.artists_frame.pack_forget()
+
+            self.artist_detailed_frame = ArtistDetailsFrame(self, artist_id=app.artists_frame.artist_detailed_frame_id.get())
+            self.artist_detailed_frame.pack(anchor=tk.CENTER, ipady=25, pady=17, ipadx=150)
+
+        else:
+            self.artist_detailed_frame.pack_forget()
+        
+
+
 
 
 

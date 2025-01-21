@@ -1,4 +1,3 @@
-![image](https://github.com/user-attachments/assets/f56e6f12-347b-41a6-8d54-0ea1f2dc9794)
 # Pytify
 
 Une interface de navigation dans une base de donnée musicale

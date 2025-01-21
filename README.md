@@ -7,12 +7,6 @@ Une interface de navigation dans une base de donnée musicale
 ![Logo](https://i.ibb.co/tL404Sq/start-page.png)
 
 
-## Tech Stack
-
-**Client:** Python, Custom Tkinter
-
-**DATABASE:** SQL LITE
-
 
 ## Features
 

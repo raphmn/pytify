@@ -1,4 +1,4 @@
-
+![image](https://github.com/user-attachments/assets/f56e6f12-347b-41a6-8d54-0ea1f2dc9794)
 # Pytify
 
 Une interface de navigation dans une base de donnée musicale
@@ -8,7 +8,7 @@ Une interface de navigation dans une base de donnée musicale
 
 
 
-## Features
+## Fonctionnalités
 
 - Artistes
 - Albums
@@ -17,7 +17,11 @@ Une interface de navigation dans une base de donnée musicale
 
 
 
-## Screenshots
+## Base de données
 
-![App Screenshot](https://i.ibb.co/ZgSLLbY/Table-BDD.png)
+![App Screenshot](![image](https://github.com/user-attachments/assets/f9f33ddc-94f9-4fa0-9aa2-6d7cb2344201))
 
+## Avertissement
+
+Pytify a été réalisé dans le cadre d'un projet de fin d'année de NSI, le code est très mal optimisé, non commenté et l'application est instable.
+Je n'exclu pas de recommencer le projet.

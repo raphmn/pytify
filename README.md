@@ -11,8 +11,8 @@ Une interface de navigation dans une base de donnée musicale
 
 - Artistes
 - Albums
-- Fonction de recherche fonctionnelle
-- Ajout / suppression dans la base de donnée
+- Fonction de recherche dans la base
+- Ajout / suppression dans la base de donnée (cassé)
 
 
 

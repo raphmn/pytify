@@ -23,4 +23,3 @@ Une interface de navigation dans une base de donnée musicale
 ## Avertissement
 
 Pytify a été réalisé dans le cadre d'un projet de fin d'année de NSI, le code est très mal optimisé, non commenté et l'application est instable.
-Je n'exclu pas de recommencer le projet.
